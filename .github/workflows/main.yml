@@ -1,0 +1,40 @@
+name: Create PR on File Update
+
+on:
+  push:
+    paths:
+      - 'index.html'  # 更新を監視する特定のファイルのパス
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # 使用するNode.jsのバージョン
+
+      - name: Create a new branch
+        run: |
+          git checkout -b update-file-branch
+
+      - name: Commit changes
+        run: |
+          git add path/to/your/specific/file.txt
+          git commit -m "Update specific file"
+
+      - name: Push changes
+        run: |
+          git push origin update-file-branch
+
+      - name: Create a pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: "Update specific file"
+          body: "This PR updates the specific file."
+          head: update-file-branch
+          base: master  # プルリクエストの対象ブランチ
