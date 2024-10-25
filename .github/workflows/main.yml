@@ -22,11 +22,6 @@ jobs:
         run: |
           git checkout -b update-file-branch
 
-      - name: Commit changes
-        run: |
-          git add index.html
-          git commit -m "Update specific file"
-
       - name: Push changes
         run: |
           git push origin update-file-branch
