@@ -13,6 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Get current branch
+        run: |
+          echo "Current branch: ${GITHUB_REF#refs/heads/}"
+
       - name: Check for changes
         id: check_changes
         run: |
