@@ -24,7 +24,7 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add path/to/your/specific/file.txt
+          git add index.html
           git commit -m "Update specific file"
 
       - name: Push changes
