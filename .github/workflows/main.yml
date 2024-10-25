@@ -13,10 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'  # 使用するNode.jsのバージョン
+      - name: Set up Git
+        run: |
+          git config --global user.email "naoko_orui@yahoo.co.jp"
+          git config --global user.name "work212"
 
       - name: Create a new branch
         run: |
