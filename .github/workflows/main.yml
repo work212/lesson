@@ -1,35 +1,31 @@
-name: Create PR on File Update
+name: Log File Changes
 
 on:
   push:
     paths:
-      - 'index.html'  # 更新を監視する特定のファイルのパス
+      - 'index.html'  # 監視したい特定のファイルのパス
 
 jobs:
-  create_pr:
+  log_changes:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Git
+      - name: Check for changes
+        id: check_changes
         run: |
-          git config --global user.email "naoko_orui@yahoo.co.jp"
-          git config --global user.name "work212"
+          if git diff --name-only HEAD^ HEAD | grep 'index.html'; then
+            echo "File has changed."
+            echo "changed=true" >> $GITHUB_ENV
+          else
+            echo "No changes detected."
+            echo "changed=false" >> $GITHUB_ENV
+          fi
 
-      - name: Create a new branch
+      - name: Log file changes
+        if: env.changed == 'true'
         run: |
-          git checkout -b update-file-branch
-
-      - name: Push changes
-        run: |
-          git push origin update-file-branch
-
-      - name: Create a pull request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: "Update specific file"
-          body: "This PR updates the specific file."
-          head: update-file-branch
-          base: master  # プルリクエストの対象ブランチ
+          echo "Changes in file.txt:"
+          git show HEAD:index.html
