@@ -1,2 +1,76 @@
-sample.hyml
-appVersion=1.1.13
+//
+//  Common.xcconfig
+//
+// Configuration settings file format documentation can be found at:
+//
+
+//
+// Xcode設定ファイル
+// アプリ共通項目
+//
+
+// MARK: - アプリ情報
+
+// アプリバージョン (`CFBundleShortVersionString` の内容)
+// ストアなど、ユーザーから見えるバージョン
+MARKETING_VERSION = 1.0.0
+
+// アプリプロジェクトのバージョン
+// ビルド番号なので、ストアへのアップロードのたびに番号を +1 すること
+CURRENT_PROJECT_VERSION = 1.0.0.0
+// アプリの言語設定
+// アプリで利用するデフォルトの言語を指定する
+MA2_IOS_DEVELOPMENT_LANGUAGE = ja_JP
+DEVELOPMENT_LANGUAGE = $(MA2_IOS_DEVELOPMENT_LANGUAGE)
+
+// アプリ表示名 (端末で表示されるアプリ名)
+BASE_BUNDLE_DISPLAY_NAME = Test
+// アプリパッケージ名 (App Store ConnectにアップロードするIPAファイルの名称)
+BASE_PRODUCT_NAME = Test
+// モジュール名
+BAEE_PRODUCT_MODULE_NAME = Test
+// バンドルID
+BASE_PRODUCT_BUNDLE_IDENTIFIER = jp.co.Tet
+// アプリアイコン名
+BASE_ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
+// 起動URLスキーマの識別子
+BASE_MA2_APP_URL_SCHEME_IDENTIFIER = jp.co.Test
+
+// 起動URLスキーマ
+MA2_APP_URL_SCHEME_NAME = jp.co.Test
+
+// AppStoreでのアプリID (itms-apps://apps.apple.com/app/id###### の ######の部分)
+MA2_APPLE_APP_STORE_ID = 1234567890
+
+// Amplitudeプラグインの使用の有無
+MA2_USE_AMPLITUDE_PLUGIN = true
+// FirebaseAnalyticsプラグインの使用の有無
+MA2_USE_FIREBASE_PLUGIN = true
+
+// FirebaseCrashlyticsの使用の有無
+MA2_USE_FIREBASE_CRASHLYTICS = true
+
+// MARK: - 許諾文言
+
+// MARK: - カメラ
+// カメラ / NSCameraUsageDescription
+// 利用機能
+//   - NautilusCodeImageProviders (Identify): 依存ライブラリが利用 (ZXingObjC)
+PRIVACY_CAMERA_USAGE = 「折りパケ」を撮影するためにカメラを使用します
+
+
+// MARK: - 位置情報
+// 位置情報 「常に」と「アプリ使用中のみ」 / NSLocationAlwaysAndWhenInUseUsageDescription
+// 利用機能
+//   - AppLocationProvider
+PRIVACY_LOCATION_ALWAYS_AND_WHEN_IN_USE = 検索地図にて現在地を表示するため位置情報を使用します。
+
+// 位置情報 「常に」 / NSLocationAlwaysUsageDescription
+// 利用機能
+//   - AppLocationProvider
+PRIVACY_LOCATION_ALWAYS = 検索地図にて現在地を表示するため位置情報を使用します。
+
+// 位置情報 「アプリ使用中のみ」 / NSLocationWhenInUseUsageDescription
+// 利用機能
+//   - AppLocationProvider
+PRIVACY_LOCATION_WHEN_IN_USE = 検索地図にて現在地を表示するため位置情報を使用します。
